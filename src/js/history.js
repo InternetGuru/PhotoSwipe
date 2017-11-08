@@ -170,7 +170,7 @@ _registerModule('History', {
           } else {
 
             if(_initialHash) {
-              _windowLoc.hash = _initialHash;
+              _windowLoc.hash = _initialHash == _getHash() ? "" : _initialHash
             } else {
               if (_supportsPushState) {
 
