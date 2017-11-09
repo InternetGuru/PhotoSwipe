@@ -170,7 +170,14 @@ _registerModule('History', {
           } else {
 
             if(_initialHash) {
-              _windowLoc.hash = _initialHash == _getHash() ? "" : _initialHash
+              var newHash = _initialHash == _getHash() ? "" : _initialHash;
+              console.log(newHash)
+              var newURL = _windowLoc.href.split('#')[0] + (newHash == "" ? "" : '#') +  newHash;
+              if( _supportsPushState ) {
+                history.pushState('', document.title, newURL);
+              } else {
+                _windowLoc.hash = newHash;
+              }
             } else {
               if (_supportsPushState) {
 
